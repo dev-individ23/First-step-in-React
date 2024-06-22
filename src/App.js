@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { nanoid } from 'nanoid';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [user,setUser] = useState({
+		name:'John',
+		surname: 'Bones',
+		age:30
+	})
+
+	const [isBan,setIsBan] = useState(true);
+
+	return <div>
+		<p>{isBan ? user.name : ''}</p>
+		<p>{isBan ? user.surname : ''}</p>
+		<p>{isBan ? user.age : ''}</p>
+
+		<button onClick={()=>{setUser({name: 'Alex',surname: 'Liskovich',age:32})}}>ChangeUser</button>
+		
+		{isBan && <button onClick={() => {setIsBan(false)}}>DeactivateUser</button>}
+            
+    {!isBan && <button onClick={() => {setIsBan(true)}}>ActivateUser</button>}
+	</div>
+
 }
 
 export default App;
