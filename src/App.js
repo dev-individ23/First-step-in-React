@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-	const  [count,setCount] = useState(1)
-
+	
+	const [value, setValue] = useState('');
+	
 	return <div>
-		<button onClick={()=>{setCount(count+1)}}>+</button>
-		<p>{count}</p>
-		<button onClick={()=>{setCount(count-1)}}>-</button>
-	</div>
+		<input value={value} onChange={(e)=>{setValue(e.target.value)}} />
+		<p>text: {value}</p>
+	</div>;
 
 }
 
