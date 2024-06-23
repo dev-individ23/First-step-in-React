@@ -23,20 +23,57 @@ function App() {
 		
 	// </div>;
 
-	const [value1, setValue1] = useState(0);
-	const [value2, setValue2] = useState(0);
-	const [value3, setValue3] = useState(0);
-	const [value4, setValue4] = useState(0);
-	const [value5, setValue5] = useState(0);
+ /////////////////////////////////////////////////////////////////////////////
+
+	// let dateNow = [new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate()];
+
+
+	// const [value1, setValue1] = useState(dateNow.join(' '));
+  //   const [value2, setValue2] = useState(dateNow.join(' ') );
+  //   const [result, setResult] = useState(0);
+
+  //   // Функция для вычисления разницы в днях между двумя датами
+  //   const calculateDifferenceInDays = () => {
+  //       if (value1!== null && value2!== null) {
+  //           const date1 = Date.parse(value1);
+  //           const date2 = Date.parse(value2);
+  //           const differenceInDays = Math.round((date1 - date2) / (1000 * 60 * 60 * 24));
+  //           setResult(differenceInDays);
+  //       }
+  //   };
+
 	
+	
+	// return (
+	// 	<div>
+	// 			<input 
+	// 					value={value1 || ''}
+	// 					onChange={(e) => { setValue1(e.target.value) }}
+	// 					placeholder="Введите первую дату"
+	// 			/>
+	// 			<input 
+	// 					value={value2 || ''}
+	// 					onChange={(e) => { setValue2(e.target.value) }}
+	// 					placeholder="Введите вторую дату"
+	// 			/>
+	// 			<button onClick={calculateDifferenceInDays}>Calculate Difference</button>
+	// 			<p>Разница в днях: {result}</p>
+	// 	</div>
+  //);
+
+	const [value,setValue] = useState('');
+	const [result, setResult] = useState(0);
+	
+
+	function getSum(value){
+		let res = Array.from(value).reduce((acc,val)=> +acc + +val);
+		return res.toString();
+	}
+
 	return <div>
-		<input value={value1} onChange={(e)=>{setValue1(+e.target.value)}} />
-		<input value={value2} onChange={(e)=>{setValue2(+e.target.value)}} />
-		<input value={value3} onChange={(e)=>{setValue3(+e.target.value)}} />
-		<input value={value4} onChange={(e)=>{setValue4(+e.target.value)}} />
-		<input value={value5} onChange={(e)=>{setValue5(+e.target.value)}} />
-		
-		<p>result: {(value1 + value2 + value3 + value4 + value5)/5}</p>
+		<input onChange={(e)=>{setValue(e.target.value)}} onBlur={()=>{setResult(getSum(value))}}/>
+
+		<p>{result}</p>
 	</div>
 
 }
